@@ -1,0 +1,6 @@
+{
+  "name": "OCR Órdenes Técnicas a Google Sheets",
+  "description": "Sistema profesional de digitalización y extracción OCR de órdenes técnicas con validación humana y sincronización directa con Google Sheets.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

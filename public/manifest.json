@@ -1,0 +1,26 @@
+{
+  "id": "/",
+  "name": "OCR Órdenes Técnicas",
+  "short_name": "Órdenes OCR",
+  "description": "Sistema de digitalización y extracción de órdenes de trabajo técnicas con Gemini y Cloud Firestore.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F5F7FA",
+  "theme_color": "#3478F6",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}

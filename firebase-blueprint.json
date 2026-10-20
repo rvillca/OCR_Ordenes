@@ -1,0 +1,79 @@
+{
+  "entities": {
+    "order": {
+      "title": "TechnicalOrder",
+      "description": "Orden técnica de trabajo con los 10 campos normativos y metadatos operativos",
+      "type": "object",
+      "properties": {
+        "fecha": { "type": "string", "maxLength": 60, "description": "1. Fecha de ejecución" },
+        "tecnico": { "type": "string", "maxLength": 120, "description": "2. Nombre del técnico" },
+        "tipo": { "type": "string", "maxLength": 120, "description": "3. Tipo de solicitud" },
+        "codigo": { "type": "string", "maxLength": 100, "description": "4. Código de cliente" },
+        "ot": { "type": "string", "maxLength": 100, "description": "5. N° Orden de Trabajo OT" },
+        "nombres": { "type": "string", "maxLength": 150, "description": "6. Nombres del cliente" },
+        "ordenPhoenix": { "type": "string", "maxLength": 100, "description": "7. N° Orden Phoenix (distinto a OT)" },
+        "nodo": { "type": "string", "maxLength": 100, "description": "8. Nodo o sector" },
+        "estado": { "type": "string", "maxLength": 100, "description": "9. Estado de la orden" },
+        "observacion": { "type": "string", "maxLength": 0, "description": "10. OBSERVACION estrictamente vacía" },
+        "fingerprint": { "type": "string", "maxLength": 200, "description": "Huella única de idempotencia" },
+        "operationId": { "type": "string", "maxLength": 100, "description": "Identificador único de la operación" },
+        "createdByUid": { "type": "string", "maxLength": 128, "description": "UID del usuario creador" },
+        "createdByEmail": { "type": "string", "maxLength": 150, "description": "Email del usuario creador" },
+        "sourceImageName": { "type": "string", "maxLength": 200, "description": "Nombre de la foto origen" },
+        "createdAt": { "type": "string", "maxLength": 50, "description": "Fecha y hora de creación" }
+      },
+      "required": [
+        "fecha",
+        "tecnico",
+        "tipo",
+        "codigo",
+        "ot",
+        "nombres",
+        "ordenPhoenix",
+        "nodo",
+        "estado",
+        "observacion",
+        "fingerprint",
+        "createdByUid",
+        "createdAt"
+      ]
+    },
+    "userProfile": {
+      "title": "UserProfile",
+      "description": "Perfil y rol del usuario del sistema",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 150 },
+        "displayName": { "type": "string", "maxLength": 120 },
+        "role": { "type": "string", "enum": ["admin", "operador"], "maxLength": 30 },
+        "createdAt": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["uid", "email", "role", "createdAt"]
+    },
+    "admin": {
+      "title": "Admin",
+      "description": "Registro de usuarios con privilegios de administrador",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "maxLength": 150 },
+        "addedAt": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["email"]
+    }
+  },
+  "firestore": {
+    "/orders/{orderId}": {
+      "schema": "#/entities/order",
+      "description": "Colección de órdenes técnicas de trabajo registradas y aprobadas"
+    },
+    "/users/{userId}": {
+      "schema": "#/entities/userProfile",
+      "description": "Perfiles de usuarios autorizados del sistema"
+    },
+    "/admins/{adminId}": {
+      "schema": "#/entities/admin",
+      "description": "Documentos de usuarios con rol de administrador del sistema"
+    }
+  }
+}
